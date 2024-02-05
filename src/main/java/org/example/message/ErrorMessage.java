@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum InfoMessage {
+public enum ErrorMessage {
 
-    REGISTER_SUCCESS("Вы успешно зарегестрировались");
+    MORE_TEAM_MEMBERS_NOT_ALLOWED("В команде уже находится 5 человек.");
 
     private final String message;
 }

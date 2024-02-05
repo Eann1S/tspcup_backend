@@ -12,6 +12,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -38,5 +41,16 @@ class AccountServiceImplTest {
         accountService.createAccountFrom(registerDto);
 
         verify(accountRepository).saveAndFlush(account);
+    }
+
+    @ParameterizedTest
+    @InstancioSource
+    void shouldReturnTeamSize(String teamName, List<Account> team) {
+        when(accountRepository.findAllByNameTeam(teamName))
+                .thenReturn(team);
+
+        int teamSize = accountService.getTeamSize(teamName);
+
+        assertThat(teamSize).isEqualTo(team.size());
     }
 }

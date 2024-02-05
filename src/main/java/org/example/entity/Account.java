@@ -8,14 +8,12 @@ import lombok.Data;
 @Table(
         name = "accounts",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = "group"),
-                @UniqueConstraint(columnNames = "nameTeam"),
+                @UniqueConstraint(columnNames = {"firstName", "lastName"}),
                 @UniqueConstraint(columnNames = "telegram"),
                 @UniqueConstraint(columnNames = "email")
         },
         indexes = {
-                @Index(columnList = "group"),
-                @Index(columnList = "nameTeam"),
+                @Index(columnList = "firstName, lastName"),
                 @Index(columnList = "telegram"),
                 @Index(columnList = "email")
         }

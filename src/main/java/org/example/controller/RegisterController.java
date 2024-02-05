@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.dto.InfoDto;
 import org.example.dto.RegisterDto;
 import org.example.service.RegisterService;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,10 @@ public class RegisterController {
     private final RegisterService registerService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<InfoDto> register(@RequestBody RegisterDto registerDto) {
         registerService.register(registerDto);
         return ResponseEntity.ok(
-                REGISTER_SUCCESS.getMessage()
+                new InfoDto(REGISTER_SUCCESS.getMessage())
         );
     }
 }

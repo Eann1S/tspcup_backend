@@ -18,9 +18,15 @@ public class AccountServiceImpl implements AccountService {
     private final AccountMapper accountMapper;
 
     @Override
-    public void createAccountFrom(RegisterDto registerDto) {
+    public Account createAccountFrom(RegisterDto registerDto) {
         Account account = accountMapper.mapRegisterDtoToAccount(registerDto);
         accountRepository.saveAndFlush(account);
         log.info("account {} was created", account.getId());
+        return account;
+    }
+
+    @Override
+    public int getTeamSize(String nameTeam) {
+        return accountRepository.findAllByNameTeam(nameTeam).size();
     }
 }
