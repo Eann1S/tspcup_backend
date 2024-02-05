@@ -1,10 +1,10 @@
 package org.example.service;
 
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 import org.example.entity.Account;
 
 public interface AccountService {
-    Account createAccountFrom(RegisterDto registerDto);
+    Account createAccountFrom(RegisterRequest registerRequest);
 
     int getTeamSize(String nameTeam);
 }

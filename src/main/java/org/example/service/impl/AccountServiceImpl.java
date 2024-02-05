@@ -2,7 +2,7 @@ package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 import org.example.entity.Account;
 import org.example.mapper.AccountMapper;
 import org.example.repository.AccountRepository;
@@ -18,8 +18,8 @@ public class AccountServiceImpl implements AccountService {
     private final AccountMapper accountMapper;
 
     @Override
-    public Account createAccountFrom(RegisterDto registerDto) {
-        Account account = accountMapper.mapRegisterDtoToAccount(registerDto);
+    public Account createAccountFrom(RegisterRequest registerRequest) {
+        Account account = accountMapper.mapRegisterDtoToAccount(registerRequest);
         accountRepository.saveAndFlush(account);
         log.info("account {} was created", account.getId());
         return account;

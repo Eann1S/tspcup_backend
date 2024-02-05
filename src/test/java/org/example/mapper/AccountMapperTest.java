@@ -1,6 +1,6 @@
 package org.example.mapper;
 
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 import org.example.entity.Account;
 import org.instancio.junit.InstancioExtension;
 import org.instancio.junit.InstancioSource;
@@ -23,25 +23,25 @@ class AccountMapperTest {
 
     @ParameterizedTest
     @InstancioSource
-    void shouldMapRegisterDtoToAccount(RegisterDto registerDto) {
-        Account account = accountMapper.mapRegisterDtoToAccount(registerDto);
+    void shouldMapRegisterDtoToAccount(RegisterRequest registerRequest) {
+        Account account = accountMapper.mapRegisterDtoToAccount(registerRequest);
 
         assertThat(account)
                 .extracting(
                         Account::getFirstName,
                         Account::getLastName,
-                        Account::getGroup,
+                        Account::getCollegeGroup,
                         Account::getNameTeam,
                         Account::getTelegram,
                         Account::getEmail
                 )
                 .containsExactly(
-                        registerDto.firstName(),
-                        registerDto.lastName(),
-                        registerDto.group(),
-                        registerDto.nameTeam(),
-                        registerDto.telegram(),
-                        registerDto.email()
+                        registerRequest.firstName(),
+                        registerRequest.lastName(),
+                        registerRequest.collegeGroup(),
+                        registerRequest.nameTeam(),
+                        registerRequest.telegram(),
+                        registerRequest.email()
                 );
     }
 }

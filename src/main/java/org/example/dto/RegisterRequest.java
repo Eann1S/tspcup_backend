@@ -1,9 +1,9 @@
 package org.example.dto;
 
-public record RegisterDto(
+public record RegisterRequest(
         String firstName,
         String lastName,
-        String group,
+        String collegeGroup,
         String nameTeam,
         String telegram,
         String email

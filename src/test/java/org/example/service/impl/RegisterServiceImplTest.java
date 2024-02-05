@@ -1,6 +1,6 @@
 package org.example.service.impl;
 
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 import org.example.entity.Account;
 import org.example.exception.MoreTeamMembersNotAllowed;
 import org.example.service.AccountService;
@@ -34,22 +34,22 @@ class RegisterServiceImplTest {
 
     @ParameterizedTest
     @InstancioSource
-    void shouldRegister(RegisterDto registerDto, Account account) {
-        when(accountService.createAccountFrom(registerDto))
+    void shouldRegister(RegisterRequest registerRequest, Account account) {
+        when(accountService.createAccountFrom(registerRequest))
                 .thenReturn(account);
 
-        registerService.register(registerDto);
+        registerService.register(registerRequest);
 
         verify(sendingMessageStrategy).sendMessageToAccount(account);
     }
 
     @ParameterizedTest
     @InstancioSource
-    void shouldThrowExceptionIfMoreMembersInTeamNotAllowed(RegisterDto registerDto) {
-        when(accountService.getTeamSize(registerDto.nameTeam()))
+    void shouldThrowExceptionIfMoreMembersInTeamNotAllowed(RegisterRequest registerRequest) {
+        when(accountService.getTeamSize(registerRequest.nameTeam()))
                 .thenReturn(5);
 
-        assertThatThrownBy(() -> registerService.register(registerDto))
+        assertThatThrownBy(() -> registerService.register(registerRequest))
                 .isInstanceOf(MoreTeamMembersNotAllowed.class)
                 .hasMessage(MORE_TEAM_MEMBERS_NOT_ALLOWED.getMessage());
     }

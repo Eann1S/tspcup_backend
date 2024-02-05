@@ -1,8 +1,8 @@
 package org.example.service;
 
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 
 public interface RegisterService {
 
-    void register(RegisterDto registerDto);
+    void register(RegisterRequest registerRequest);
 }

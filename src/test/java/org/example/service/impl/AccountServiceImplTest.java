@@ -1,6 +1,6 @@
 package org.example.service.impl;
 
-import org.example.dto.RegisterDto;
+import org.example.dto.RegisterRequest;
 import org.example.entity.Account;
 import org.example.mapper.AccountMapper;
 import org.example.repository.AccountRepository;
@@ -34,11 +34,11 @@ class AccountServiceImplTest {
 
     @ParameterizedTest
     @InstancioSource
-    void shouldCreateAccount(RegisterDto registerDto, Account account) {
-        when(accountMapper.mapRegisterDtoToAccount(registerDto))
+    void shouldCreateAccount(RegisterRequest registerRequest, Account account) {
+        when(accountMapper.mapRegisterDtoToAccount(registerRequest))
                 .thenReturn(account);
 
-        accountService.createAccountFrom(registerDto);
+        accountService.createAccountFrom(registerRequest);
 
         verify(accountRepository).saveAndFlush(account);
     }

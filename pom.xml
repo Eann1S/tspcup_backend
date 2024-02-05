@@ -41,12 +41,6 @@
       <optional>true</optional>
     </dependency>
 
-    <!-- *** Config server client *** -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
-    </dependency>
-
     <!-- *** Validation *** -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -191,6 +185,10 @@
               <path>
                 <from>.idea</from>
                 <excludes>*.xml,**/*.xml</excludes>
+              </path>
+              <path>
+                <from>src/main/java/resources</from>
+                <excludes>.env</excludes>
               </path>
             </paths>
           </extraDirectories>
