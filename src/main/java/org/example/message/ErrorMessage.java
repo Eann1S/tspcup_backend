@@ -7,7 +7,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ErrorMessage {
 
-    MORE_TEAM_MEMBERS_NOT_ALLOWED("В команде уже находится 5 человек.");
+    TEAM_CAPACITY_IS_EXCEEDED("В команде %s уже находится %s человек."),
+    ACCOUNT_ALREADY_EXISTS("Аккаунт %s уже существует");
 
     private final String message;
+
+    public String formatWith(Object... params) {
+        return message.formatted(params);
+    }
 }

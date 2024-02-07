@@ -10,4 +10,10 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, String> {
 
     List<Account> findAllByNameTeam(String nameTeam);
+
+    boolean existsByFirstNameAndLastName(String firstName, String lastName);
+
+    boolean existsByTelegram(String telegram);
+
+    boolean existsByEmail(String email);
 }

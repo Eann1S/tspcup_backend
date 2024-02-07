@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.InfoDto;
 import org.example.dto.RegisterRequest;
@@ -20,7 +21,7 @@ public class RegisterController {
     private final RegisterService registerService;
 
     @PostMapping("/register")
-    public ResponseEntity<InfoDto> register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<InfoDto> register(@RequestBody @Valid RegisterRequest registerRequest) {
         registerService.register(registerRequest);
         return ResponseEntity.ok(
                 new InfoDto(REGISTER_SUCCESS.getMessage())

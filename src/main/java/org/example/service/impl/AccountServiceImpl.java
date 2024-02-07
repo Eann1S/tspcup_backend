@@ -29,4 +29,19 @@ public class AccountServiceImpl implements AccountService {
     public int getTeamSize(String nameTeam) {
         return accountRepository.findAllByNameTeam(nameTeam).size();
     }
+
+    @Override
+    public boolean accountExistsWithFirstNameAndLastName(String firstName, String lastName) {
+        return accountRepository.existsByFirstNameAndLastName(firstName, lastName);
+    }
+
+    @Override
+    public boolean accountExistsWithTelegram(String telegram) {
+        return accountRepository.existsByTelegram(telegram);
+    }
+
+    @Override
+    public boolean accountExistsWithEmail(String email) {
+        return accountRepository.existsByEmail(email);
+    }
 }

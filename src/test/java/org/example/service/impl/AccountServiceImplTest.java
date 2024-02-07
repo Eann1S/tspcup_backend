@@ -53,4 +53,37 @@ class AccountServiceImplTest {
 
         assertThat(teamSize).isEqualTo(team.size());
     }
+
+    @ParameterizedTest
+    @InstancioSource
+    void shouldReturnThatAccountExistsWithFirstNameAndLastName(Account account) {
+        when(accountRepository.existsByFirstNameAndLastName(account.getFirstName(), account.getLastName()))
+                .thenReturn(true);
+
+        boolean actual = accountService.accountExistsWithFirstNameAndLastName(account.getFirstName(), account.getLastName());
+
+        assertThat(actual).isTrue();
+    }
+
+    @ParameterizedTest
+    @InstancioSource
+    void shouldReturnThatAccountExistsWithTelegram(Account account) {
+        when(accountRepository.existsByTelegram(account.getTelegram()))
+                .thenReturn(true);
+
+        boolean actual = accountService.accountExistsWithTelegram(account.getTelegram());
+
+        assertThat(actual).isTrue();
+    }
+
+    @ParameterizedTest
+    @InstancioSource
+    void shouldReturnThatAccountExistsWithEmail(Account account) {
+        when(accountRepository.existsByEmail(account.getEmail()))
+                .thenReturn(true);
+
+        boolean actual = accountService.accountExistsWithEmail(account.getEmail());
+
+        assertThat(actual).isTrue();
+    }
 }
