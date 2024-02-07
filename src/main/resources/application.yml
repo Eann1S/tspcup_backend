@@ -29,4 +29,4 @@ spring:
           auth: true
           starttls.enable: true
           ssl.trust: smtp.gmail.com
-    message: "https://t.me/tspkcup"
+    message: ${MAIL_MESSAGE}
