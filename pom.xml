@@ -11,7 +11,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>tspcup_backend</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>tspcup_backend</name>
@@ -187,7 +187,7 @@
                 <excludes>*.xml,**/*.xml</excludes>
               </path>
               <path>
-                <from>src/main/java/resources</from>
+                <from>./</from>
                 <excludes>.env</excludes>
               </path>
             </paths>
