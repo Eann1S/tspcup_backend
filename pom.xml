@@ -11,7 +11,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>tspcup_backend</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>tspcup_backend</name>
@@ -28,17 +28,17 @@
   </properties>
 
   <dependencies>
+    <!-- *** Mail *** -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+
     <!-- *** Config processor *** -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
-    </dependency>
-
-    <!-- *** Config server client *** -->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-config</artifactId>
     </dependency>
 
     <!-- *** Validation *** -->
@@ -185,6 +185,10 @@
               <path>
                 <from>.idea</from>
                 <excludes>*.xml,**/*.xml</excludes>
+              </path>
+              <path>
+                <from>./</from>
+                <excludes>.env</excludes>
               </path>
             </paths>
           </extraDirectories>
