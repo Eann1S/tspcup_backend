@@ -5,15 +5,15 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 public record RegisterRequest(
-        @Pattern(regexp = "[а-яА-Яa-zA-Z]+", message = "{validation.firstName.pattern}")
+        @Pattern(regexp = "^[А-Яа-яёЁ]+(-[А-Яа-яёЁ]+)?$", message = "{validation.firstName.pattern}")
         String firstName,
-        @Pattern(regexp = "[а-яА-Яa-zA-Z]+", message = "{validation.lastName.pattern}")
+        @Pattern(regexp = "^[А-Яа-яёЁ]+(-[А-Яа-яёЁ]+)?$", message = "{validation.lastName.pattern}")
         String lastName,
         @NotBlank(message = "{validation.collegeGroup.notBlank}")
         String collegeGroup,
-        @Pattern(regexp = "\\w+", message = "{validation.nameTeam.pattern}")
+        @Pattern(regexp = "^[A-Za-z0-9]+$", message = "{validation.nameTeam.pattern}")
         String nameTeam,
-        @Pattern(regexp = "@\\w+", message = "{validation.telegram.pattern}")
+        @Pattern(regexp = "^@[A-Za-z0-9]+$", message = "{validation.telegram.pattern}")
         String telegram,
         @Email(message = "{validation.email.notValid}")
         @NotBlank(message = "{validation.email.notBlank}")
